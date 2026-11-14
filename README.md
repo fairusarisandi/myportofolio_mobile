@@ -47,3 +47,6 @@ samples, guidance on mobile development, and a full API reference.
 5. BuildContext merupakan objek yang merepresentasikan lokasi suatu widget dalam struktur element tree Flutter. Objek ini memungkinkan widget mengakses informasi maupun layanan yang tersedia dari ancestor widget, yaitu widget-widget yang berada di atasnya dalam hierarki.
 
 6. Hot reload merupakan fitur Flutter yang memungkinkan developer melihat perubahan kode secara cepat tanpa harus menjalankan ulang aplikasi dari awal. Fitur ini bekerja dengan memasukkan perubahan kode Dart ke Dart VM, kemudian memicu rebuild pada widget tree yang relevan. Sementara itu, hot restart menjalankan ulang aplikasi Flutter dari awal pada level kode Dart. Proses ini akan menghapus state aplikasi yang tersimpan di memori dan menjalankan kembali fungsi main().
+
+# AI Disclosure
+Untuk saat ini, proyek ini tidak menggunakan bantuan AI tools apa pun. Seiring berjalannya waktu, jika nantinya ada penggunaan AI tools, akan ada update dan penjelasan pada bagian ini.

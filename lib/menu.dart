@@ -140,8 +140,14 @@ class ItemCard extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"),
+              ),
             );
+
+            // Navigate ke halaman yang sesuai
+            if (item.name == "Tambah Proyek") {
+              // TODO: Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ProjectFormPage
+            }
         },
         child: Container(
           padding: const EdgeInsets.all(8),

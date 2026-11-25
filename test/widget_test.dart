@@ -106,10 +106,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(ProjectFormPage), findsNothing);
 
-      await tapVisible(
-        tester,
-        find.widgetWithText(ListTile, 'Add Project'),
-      );
+      await tapVisible(tester, find.widgetWithText(ListTile, 'Add Project'));
       await login(tester);
       expect(find.byType(ProjectFormPage), findsOneWidget);
 

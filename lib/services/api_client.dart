@@ -51,7 +51,9 @@ class ApiClient {
       },
       body: jsonEncode(project.toJson()),
     );
-    _ensureSuccess(response);
+    if (response.statusCode != 201) {
+      throw ApiException(response.statusCode, response.body);
+    }
 
     final decoded = jsonDecode(response.body) as Map<String, dynamic>;
     return Project.fromJson(decoded);

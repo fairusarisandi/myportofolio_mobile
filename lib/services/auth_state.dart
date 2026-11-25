@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' show ClientException;
 import 'package:myportofolio_mobile/services/api_client.dart';
 
 /// Holds the in-memory authentication token for the current session.
@@ -7,6 +8,7 @@ class AuthState extends ChangeNotifier {
 
   final ApiClient _apiClient;
   String? _token;
+  Future<void>? _logoutRequest;
 
   String? get token => _token;
   bool get isLoggedIn => _token != null;
@@ -19,12 +21,18 @@ class AuthState extends ChangeNotifier {
   Future<void> logout() async {
     final current = _token;
     if (current == null) return;
+    await (_logoutRequest ??= _logout(current));
+  }
 
+  Future<void> _logout(String token) async {
     try {
-      await _apiClient.logout(token: current);
+      await _apiClient.logout(token: token);
     } on ApiException {
       // A rejected request still ends the local session.
+    } on ClientException {
+      // The local session can end even if the server is unreachable.
     } finally {
+      _logoutRequest = null;
       _token = null;
       notifyListeners();
     }
